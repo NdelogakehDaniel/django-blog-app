@@ -31,5 +31,7 @@ Contact me at:                                                                  
 ---------------------------------------------------------------------------------------------
 
 
-                                            THANKS FOR VSITING THIS REPOSITORY MADE BY CODING CODE
-                                            ++++++++++++++++++++++++++++++++++++++++++++++++++++++
+                               THANKS FOR VSITING THIS REPOSITORY MADE BY CODING CODE
+                                            
+                         Link to deployed app: https://django-blog-ndabose-app.herokuapp.com/
+                         ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
