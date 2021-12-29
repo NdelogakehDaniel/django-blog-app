@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+
+
+
+{% block content %}
+{% load static %}
+<h1 class="text-center slider-text">Bl<span>oo</span>g</h1>
+<!-- For top slide show -->
+
+<div class="slide_show_row">
+    <div class="slide_show">
+        <img src="{% static 'images/slideshow-1.jpg' %}" alt="Preview Image" id="pimg">
+        <div class="slide_show_text">
+            <span class="type_date"> Business, Travel <span style="color: #999;"> — July 2, 2020</span></span>
+            <h3 class="slide_show_text_title">
+                Your most unhappy customers are your greatest source of learning
+            </h3>
+            <span style="color: rgba(108, 99, 99, 0.95);font-size: 18px;font-style: italic;">
+                Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.
+            </span>
+        </div>
+    </div>
+</div>
+
+<!-- End of top slide show -->
+
+<div class="select_show">
+    <div class="slide_show_row1">
+        {% if posts %}
+        {% for post in posts %}
+        <div class="slide_show1" style="margin-bottom: 2%;">
+            <img src="{{ post.image.url }}" alt="Preview Image" id="pimg1">
+            <div class="slide_show_text1">
+                <span class="type_date1"> {{ post.category }} <span style="color: #999;"> — {{ date }}</span><a href="{% url 'one_category' post.category_id post.id %}" class="badge bg-info ml-4 p-2 text-white">#{{ post.category }}</a>
+                </span>
+                <h3 class="slide_show_text_title1">
+                    {{ post.title }}
+                </h3>
+                <span class="description">
+                    {{ post.description }}
+                </span>
+                <div class="post_footer">
+                    <span class="pseudo">{{ post.name|slice:"1" }}</span>
+                    <div class="poster_name">
+                        <span>{{ post.name }}</span>
+                        <p>#Anonymous post</p>
+                    </div>
+                    <div class="post_reviews">
+                        <span class="badge badge-danger">#Views &nbsp;{{ post.views }}</span>
+                        <span class="badge badge-secondary">#Likes &nbsp;{{ post.likes }}</span>
+                        <a href="{% url 'details' post.id %}" class="badge badge-primary">read more</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {% endfor %}
+        {% else %}
+            <h1 style="color: darkred;text-align: center;margin:4%;">No Post Found Try Posting Something !!!</h1>
+        {% endif %}
+
+        
+    </div>
+</div>
+
+<div class="col-md-12 py-md-5 my-3 text-center" id="view-more">
+    <a href="{% url 'allPost' %}" class="">View all Posts &nbsp;&nbsp;&nbsp;<span class="fa fa-chevron-right"></span></a>
+</div>
+
+{% endblock content %}

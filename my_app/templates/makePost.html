@@ -1,0 +1,130 @@
+{%extends 'base.html' %}
+
+{% block content %}
+
+{% if success %}
+<div class="alert alert-success d-flex align-tems-center col-md-8 m-4" style="display: flex;align-self: center;font-size:16px;">
+    {{success}} &nbsp;&nbsp;
+    <a href="{% url 'home' %}" class="alert-link">go to home</a>
+  </div>
+{% endif %}
+
+<h1 class="text-center slider-text">Make <span>a</span> P<span>oo</span>st</h1>
+<!-- form to add a new post -->
+<style>
+    input{
+    display: block;
+    width: 100%;
+    padding: .375rem .75rem;
+    font-size: 1.2rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: .25rem;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    }
+    select {
+    display: block;
+    width: 100%;
+    padding: .375rem 2.25rem .375rem .75rem;
+    -moz-padding-start: calc(0.75rem - 3px);
+    font-size: 1.2rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    background-color: #fff;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23343a40' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right .75rem center;
+    background-size: 16px 12px;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    }
+    
+button, input, textarea, select {
+    margin: 0;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+}
+    textarea {
+    resize: vertical;
+    }
+    button, input, textarea,select {
+        margin: 0;
+        font-family: inherit;
+        font-size: inherit;
+        line-height: inherit;
+    }
+
+    textarea.form-control {
+    min-height: calc(1.5em + .75rem + 2px);
+}
+textarea{
+    display: block;
+    width: 100%;
+    padding: .375rem .75rem;
+    font-size: 1.2rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: .25rem;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+label {
+    font-size: 1.3vw;
+    color: #252c33;
+    line-height: 1.2;
+    font-weight: 600;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+</style>
+<form action="/post/" method="post" enctype="multipart/form-data" class="container col-md-8 ">
+    {% csrf_token %}
+    <div class="mb-3">
+        <label class="form-label">Select Post Category *:</label>
+        {{ form.category}}
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Poster Name *</label>
+        {{ form.name }}
+    </div>
+
+    <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Post Title *</label>
+        {{ form.title }}
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Post Description *</label>
+        {{ form.description }}
+    </div>
+
+    <div class="mb-3">
+        <label for="formFile" class="form-label">Image For Post *</label>
+        {{ form.image }}
+    </div>
+
+    <button type="submit" class="btn btn-secondary" style="font-size: 18px; width: 220px;height:48px;float: inline-end;">Save Post</button>
+
+</form>
+<!-- End of form -->
+{% endblock content%}
