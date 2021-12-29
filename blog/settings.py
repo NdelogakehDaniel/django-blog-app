@@ -83,7 +83,7 @@ DATABASES = {
             'NAME': 'djblog',  
             'USER':'root',  
             'PASSWORD':'',  
-            'HOST':'db',  
+            'HOST':'127.0.0.1',  
             'PORT':'3306',
             'OPTIONS': {
             'sql_mode': 'traditional',

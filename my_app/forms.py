@@ -1,5 +1,11 @@
 from django import forms
-from .models import Post
+from .models import *
+
+
+class CategoryForm(forms.ModelForm):
+    class Meta:
+        model = Category
+        fields = "__all__"
 
 class PostForm(forms.ModelForm):
     class Meta:
@@ -12,3 +18,5 @@ class PostForm(forms.ModelForm):
         self.fields['description'].rows = 3
         self.fields['views'].required = False
         self.fields['likes'].required = False
+        
+        

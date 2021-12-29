@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect
-from .forms import PostForm
-from .models import Post
+from .forms import *
+from .models import *
 # from .mysql_connection import *
 from datetime import date
 
@@ -69,3 +69,18 @@ def updatePost(request,id=0):
         return render(request,'details.html',{'post':post,'date':currentDate})
     else:
         return redirect('home')
+    
+#function to add categories
+def addCategory(request):
+    if request.method == 'POST':
+        form = CategoryForm(request.POST)
+        if form.is_valid():
+            form.save()
+            
+            form = CategoryForm()
+            return render(request,'addCategory.html',{'form':form,'success':'Category added with success'})
+    
+    form = CategoryForm()
+    return render(request,'addCategory.html',{'form':form})
+    
+            

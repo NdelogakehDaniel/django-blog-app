@@ -1,0 +1,53 @@
+{%extends 'base.html' %}
+
+{% block content %}
+
+{% if success %}
+<div class="alert alert-success d-flex align-tems-center col-md-8 m-4" style="display: flex;align-self: center;font-size:16px;">
+    {{success}} &nbsp;&nbsp;
+    <a href="{% url 'home' %}" class="alert-link">go to home</a>
+  </div>
+{% endif %}
+
+<h1 class="text-center slider-text">Add <span>Cat</span> e<span>go</span>ry</h1>
+<!-- form to add a new post -->
+<style>
+    input{
+    display: block;
+    width: 100%;
+    padding: .375rem .75rem;
+    font-size: 1.2rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: .25rem;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    }
+label {
+    font-size: 1.3vw;
+    color: #252c33;
+    line-height: 1.2;
+    font-weight: 600;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+</style>
+<form action="" method="post" class="container col-md-8 ">
+    {% csrf_token %}
+    
+    <div class="mb-3">
+        <label class="form-label">Category Name:  *</label>
+        {{ form.title }}
+    </div>
+
+    <button type="submit" class="btn btn-secondary" style="font-size: 18px; width: 220px;height:48px;float: inline-end;">Save Category</button>
+
+</form>
+<!-- End of form -->
+{% endblock content%}
