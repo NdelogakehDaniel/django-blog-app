@@ -1,3 +1,4 @@
+"""
 import mysql.connector
 
 mydb = mysql.connector.connect(
@@ -6,4 +7,5 @@ mydb = mysql.connector.connect(
   password="",
   database="djblog"
 )
+"""
 
