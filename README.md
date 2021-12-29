@@ -23,6 +23,7 @@ In this project i made use:
         
 ********************************************************************************************
 I am open to all remarks,comments,critisms.                                                 |
+Link to app: https://django-blog-ndabose-app.herokuapp.com/                                 |
                                                                                             |
 But nevertheless if you love the project and which to work with me on projects or higher    |
 Contact me at:                                                                              |
