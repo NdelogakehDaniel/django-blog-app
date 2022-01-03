@@ -89,5 +89,20 @@ def addCategory(request):
     
     form = CategoryForm()
     return render(request,'addCategory.html',{'form':form,'tags':tags})
+
+
+#display small dashboard
+def displayDashboard(request):
+    posts = Post.objects.all().order_by('-id')
+    return render(request,'deletePost.html',{'posts':posts})
+
+#blog of code to delete blog
+def deletePost(request,id=0):
+    post = Post.objects.get(id=id)
+    post.delete()
+    posts = Post.objects.all().order_by('-id')
+    return render(request,'deletePost.html',{'posts':posts,'success':'Post Delete Successfully '})
+
+    
     
             

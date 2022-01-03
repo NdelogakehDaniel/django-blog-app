@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<style>
+    .table_content{
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            margin-top: 3%;
+            margin-bottom: 3%;
+        }
+        table{
+            width: 90%;
+            border-collapse: collapse;
+            border: 1px solid gray;
+        }
+        th{
+            padding: 1%;
+            border-color: gray;
+            font-weight: bolder;
+        }
+        td{
+            text-align: center;
+            padding: 1%;
+            border-color: lightgray;
+            font-size: 18px;
+        }
+        td a{
+            text-decoration: none;
+        }
+        td a button{
+            width: auto;
+            height: 40px;
+            border: none;
+            outline: none;
+            padding: 3%;
+            border-radius: 4px;
+            font-size: 16px;
+            text-align: center;
+            color: white;
+        }
+        a:hover button:hover{
+            cursor: pointer;
+        }
+</style>
+
+
+{% if success %}
+<div class="alert alert-success d-flex align-tems-center col-md-8 m-4" style="display: flex;align-self: center;font-size:16px;">
+    {{success}} &nbsp;&nbsp;
+    <a href="{% url 'home' %}" class="alert-link">go to home</a>
+</div>
+{% endif %}
+
+<div class="table_content">
+
+    <table border="1">
+        <thead>
+            <th>#ID</th>
+            <th>Title</th>
+            <th>Name</th>
+            <th>Views</th>
+            <th>Likes</th>
+            <th>Action (s)</th>
+        </thead>
+    {% if posts %}
+    {% for post in posts %}
+        <tr>
+            <td>#{{ post.id }}</td>
+            <td>{{ post.title }}</td>
+            <td>{{ post.name }}</td>
+            <td>{{ post.views }}</td>
+            <td>{{ post.likes }}</td>
+            <td class="actions">
+                <a href="{% url 'details' post.id %}">
+                    <button style="background-color: #0975aa;">View Post</button>
+                </a>
+                <a href="{% url 'delete' post.id %}">
+                    <button style="background-color: #c10909;">Delete</button>
+                </a>
+            </td>
+        </tr>
+    {% endfor %}
+    {% else %}
+        <h1 style="margin-top: 3%; margin-bottom: 3%; color: darkred;font-size: 32px; text-align: center;">No Post Was Found !!!!</h1>
+    {% endif %}
+    </table>
+    </div>
+    
+
+
+{% endblock content %}
